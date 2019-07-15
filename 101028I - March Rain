@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const int e= 1e5+6;
+int T,n,NumOfStrip,arr[e];
+ 
+bool cover(int midd){
+    int score=0,strip=0;
+    for(int z=0;z<n;z++){
+        if(score<arr[z]){
+            ++strip;
+            score=arr[z]+midd-1;
+        }
+    }
+    if(strip<=NumOfStrip)   return 1;
+    else return 0;
+}
+ 
+int BinarySearch(){
+    int low=1,mid=0,high=1e9+4;
+    while(high-low>0){
+        mid = (high+low)/2;
+        if(cover(mid)) high=mid;
+        else low = mid+1;
+    }
+    return low;
+}
+ 
+ 
+int main()
+{
+        scanf("%d",&T);
+        while(T--){
+            scanf("%d%d",&n,&NumOfStrip);
+            for(int i=0;i<n;i++) scanf("%d",arr+i);
+            
+            printf("%d\n",BinarySearch());
+        }
+    return 0;
+}
+//MG
+//https://codeforces.com/gym/101028/problem/I

@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int E=1e2+2;
+int T,n,arr[E],sum,t=1;
+
+int HelloRecursion(int sz){
+    if(sz==0)   return 1;
+    sum+=arr[sz-1];
+    HelloRecursion(sz-1);
+    return sum;
+}
+
+int main()
+{
+  scanf("%d",&T);
+  while(T--){
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        scanf("%d",arr+i);
+    }
+
+  printf("Case %d: %d\n",t,HelloRecursion(n));
+  t++;
+  sum=0;
+  }
+    return 0;
+}
+//https://www.spoj.com/problems/HRECURS/
